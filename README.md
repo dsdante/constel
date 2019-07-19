@@ -20,6 +20,7 @@ Physical and visual options can be set in constel.conf.
 
 
 ### To do
+ * Cross-platform multithreading (OpenMP)
  * Reduce entropy
  * Collisions and merging
  * Mean field method
