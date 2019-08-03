@@ -20,7 +20,7 @@ extern struct input {
 } input;
 
 void init_input(GLFWwindow* window);
-void process_input();
+void process_input(GLFWwindow *window);
 void finalize_input();
 
 #endif // INPUT_H

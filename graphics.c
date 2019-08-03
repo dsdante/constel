@@ -423,9 +423,10 @@ static void update_view()
 
         for (int x = 0; x < (star_texture_size+1)/2; x++)
         for (int y = 0; y <= x; y++) {
-            float dx = (0.5f * star_texture_size - x) / zoom / star_size * 20 ;
-            float dy = (0.5f * star_texture_size - y) / zoom / star_size * 20 ;
-            float alpha = 1.0f / (dx*dx + dy*dy);
+            float dx = (0.5f * star_texture_size - x) / zoom / star_size;
+            float dy = (0.5f * star_texture_size - y) / zoom / star_size;
+            float alpha = 0.001f / (dx*dx + dy*dy);
+            //float alpha = exp(-100.0*(dx*dx + dy*dy));  // Airy disk approximated with a Gaussian profile
             int x2 = star_texture_size-1-x;
             int y2 = star_texture_size-1-y;
             // exploit symmetry
@@ -611,6 +612,7 @@ void draw()
     glClear(GL_COLOR_BUFFER_BIT);
 
     // Draw stars
+    // comment the next line for a more realistic and less spectacular rendering
     glBlendFunc(GL_SRC_ALPHA, GL_ONE);
     glUseProgram(star_shader);
     glEnableVertexAttribArray(star_position_attribute);

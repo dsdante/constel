@@ -5,8 +5,8 @@
 #include <GLFW/glfw3.h>
 #include "input.h"
 
-#define DOUBLE_CLICK_INTERVAL 0.5
-#define DOUBLE_CLICK_TOLERANCE 4
+#define double_click_interval 0.5
+#define double_click_tolerance 4
 
 struct input input = { 0 };
 
@@ -62,9 +62,9 @@ static void glfw_mouse_button(GLFWwindow *window, int button, int action, int mo
         if (!pressed)
             break;
         double time = glfwGetTime();
-        if (time - double_click_start <= DOUBLE_CLICK_INTERVAL
-              && abs(cur_mousex-clickx) <= DOUBLE_CLICK_TOLERANCE
-              && abs(cur_mousey-clicky) <= DOUBLE_CLICK_TOLERANCE) {
+        if (time - double_click_start <= double_click_interval
+              && abs(cur_mousex-clickx) <= double_click_tolerance
+              && abs(cur_mousey-clicky) <= double_click_tolerance) {
             input.double_click = true;
             input.mouse_left = false;
             double_click_start = -INFINITY;
